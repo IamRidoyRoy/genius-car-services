@@ -17,9 +17,9 @@ const Experts = () => {
         { id: 6, name: "Will Smith", img: expert6 },
     ]
     return (
-        <div className='container '>
+        <div id='experts' className='container '>
             <h1 className='text-center text-primary mt-5 mb-5'>Our Experts</h1>
-            <div className="row text-center ">
+            <div className="row text-center">
                 {
                     experts.map(expert => <Expert
                         key={expert.id}

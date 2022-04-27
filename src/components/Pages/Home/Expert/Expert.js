@@ -4,7 +4,8 @@ const Expert = ({ expert }) => {
     const { img, name } = expert;
     return (
 
-        <div className="col-12 col-md-6 col-lg-4">
+
+        <div className="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3">
             <div className='card' style={{ width: '18rem' }}>
                 <img src={img} class="card-img-top w-100" alt="..." />
                 <div className="card-body">
@@ -14,6 +15,7 @@ const Expert = ({ expert }) => {
                 </div>
             </div>
         </div>
+
 
 
     );
