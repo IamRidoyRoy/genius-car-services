@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Experts.css'
 import expert1 from '../../../../images/experts/expert-1.jpg'
 import expert2 from '../../../../images/experts/expert-2.jpg'
 import expert3 from '../../../../images/experts/expert-3.jpg'
@@ -17,9 +17,9 @@ const Experts = () => {
         { id: 6, name: "Will Smith", img: expert6 },
     ]
     return (
-        <div className='container'>
-            <h1 className='text-center text-primary'>Our Experts</h1>
-            <div className="row text-center">
+        <div className='container '>
+            <h1 className='text-center text-primary mt-5 mb-5'>Our Experts</h1>
+            <div className="row text-center ">
                 {
                     experts.map(expert => <Expert
                         key={expert.id}
