@@ -37,10 +37,10 @@ const Login = () => {
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Login
                 </Button>
             </Form>
-            <p className='text-center mt-3'>New to genius car? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link></p>
+            <p className='text-center mt-3'>New to genius car? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}><b>Please Register</b></Link></p>
         </div>
     );
 };
