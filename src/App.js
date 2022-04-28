@@ -8,7 +8,8 @@ import Register from './components/Pages/Register/Register';
 import Footer from './components/Pages/Shared/Footer/Footer';
 import Header from './components/Pages/Shared/Header/Header';
 import NotFound from './components/Pages/Shared/NotFound/NotFound';
-
+import CheckOut from './components/Pages/CheckOut/CheckOut'
+import RequireAuth from './components/Pages/Login/RequireAuth/RequireAuth';
 function App() {
   return (
     <div >
@@ -19,6 +20,9 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/service/:serviceId' element={<ServiceDetails></ServiceDetails>}></Route>
+        <Route path='/checkout' element={
+          <RequireAuth><CheckOut></CheckOut></RequireAuth>
+        }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>
