@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
-
+import SocialLogin from './SocialLogin/SocialLogin'
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -32,15 +32,13 @@ const Login = () => {
         navigate(from, { replace: true })
     }
     return (
-        <div className='container w-50 mt-5'>
-            <h2 className='text-primary text-center mb-5'>Please Login</h2>
+        <div className='container w-50 mt-2'>
+            <h2 className='text-primary text-center mb-2'>Please Login</h2>
             <Form onSubmit={handleSubmit} className='w-75  m-auto'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -54,7 +52,9 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
-            <p className='text-center mt-3'>New to genius car? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}><b>Please Register</b></Link></p>
+            <p className='text-center mt-2'>New to genius car? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}><b>Please Register</b></Link></p>
+
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
