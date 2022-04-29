@@ -18,7 +18,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     // Reset Password 
-    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
     const handleResetPassword = async () => {
         const email = emailRef.current.value;
         await sendPasswordResetEmail(email);

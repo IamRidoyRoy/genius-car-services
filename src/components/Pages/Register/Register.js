@@ -1,6 +1,6 @@
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 import SocialLogin from '../Login/SocialLogin/SocialLogin';
 import { useState } from 'react';
@@ -13,27 +13,30 @@ const Register = () => {
         user,
         // loading,
         // error,
-    ] = useCreateUserWithEmailAndPassword(auth);
-    const handleSubmit = event => {
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    // Update Profile 
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+
+    const handleRegister = async (event) => {
         event.preventDefault();
-        // const name = event.target.name.value;
+        const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        const agree = event.target.terms.checked;
-        if (agree) {
-
-            createUserWithEmailAndPassword(email, password);
-        }
-
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        alert('Updated profile');
+        navigate('/home');
     }
     if (user) {
-        navigate('/home');
+        console.log(user);
     }
 
     return (
         <div className='container w-50 mt-2'>
             <h2 className='text-primary text-center mb-5'>Please Register</h2>
-            <Form onSubmit={handleSubmit} className='w-75  m-auto'>
+            <Form onSubmit={handleRegister} className='w-75  m-auto'>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Your Name</Form.Label>
                     <Form.Control type="name" name='name' placeholder="Your Name" />
