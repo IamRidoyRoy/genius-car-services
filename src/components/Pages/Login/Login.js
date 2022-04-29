@@ -13,8 +13,8 @@ const Login = () => {
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
-        error,
+        // loading,
+        // error,
     ] = useSignInWithEmailAndPassword(auth);
 
     const handleSubmit = event => {
