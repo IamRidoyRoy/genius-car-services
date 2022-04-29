@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
 import SocialLogin from './SocialLogin/SocialLogin'
@@ -16,6 +16,15 @@ const Login = () => {
         // loading,
         // error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    // Reset Password 
+    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth);
+    const handleResetPassword = async () => {
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email);
+        alert('Sent email');
+    }
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -45,14 +54,13 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
+
+                <Button className='d-block m-auto w-50' variant="primary" type="submit">
                     Login
                 </Button>
             </Form>
-            <p className='text-center mt-2'>New to genius car? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}><b>Please Register</b></Link></p>
+            <p className='text-center mt-2'>Forgot Password? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={handleResetPassword}><b>Reset Password</b></Link></p>
+            <p className='text-center mt-2'>New to genius car? <Link to='/register' className='text-primary pe-auto text-decoration-none' onClick={navigateRegister}><b>Please Register</b></Link></p>
 
             <SocialLogin></SocialLogin>
         </div>
