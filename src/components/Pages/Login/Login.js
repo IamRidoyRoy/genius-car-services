@@ -8,6 +8,7 @@ import SocialLogin from './SocialLogin/SocialLogin'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Shared/Loading/Loading';
+import PageTitle from '../PageTitle/PageTitle';
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -62,6 +63,7 @@ const Login = () => {
         navigate(from, { replace: true })
     }
     return (
+
         <div className='container w-50 mt-2'>
             <h2 className='text-primary text-center mb-2'>Please Login</h2>
             <Form onSubmit={handleSubmit} className='w-75  m-auto'>
@@ -84,6 +86,9 @@ const Login = () => {
             <p className='text-center mt-2'>New to genius car? <Link to='/register' className='text-primary pe-auto text-decoration-none' onClick={navigateRegister}><b>Please Register</b></Link></p>
             <SocialLogin></SocialLogin>
             <ToastContainer />
+
+            <PageTitle title='Login'></PageTitle>
+
         </div>
     );
 };
