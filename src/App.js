@@ -11,6 +11,7 @@ import NotFound from './components/Pages/Shared/NotFound/NotFound';
 import CheckOut from './components/Pages/CheckOut/CheckOut'
 import RequireAuth from './components/Pages/Login/RequireAuth/RequireAuth';
 import AddService from './components/Pages/AddService/AddService';
+import ManageServices from './components/Pages/ManageServices/ManageServices';
 function App() {
   return (
     <div >
@@ -26,6 +27,9 @@ function App() {
         }></Route>
         <Route path='/addservice' element={
           <RequireAuth><AddService></AddService></RequireAuth>
+        }></Route>
+        <Route path='/manageservices' element={
+          <RequireAuth><ManageServices></ManageServices></RequireAuth>
         }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
