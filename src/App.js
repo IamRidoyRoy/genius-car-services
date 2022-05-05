@@ -10,6 +10,7 @@ import Header from './components/Pages/Shared/Header/Header';
 import NotFound from './components/Pages/Shared/NotFound/NotFound';
 import CheckOut from './components/Pages/CheckOut/CheckOut'
 import RequireAuth from './components/Pages/Login/RequireAuth/RequireAuth';
+import AddService from './components/Pages/AddService/AddService';
 function App() {
   return (
     <div >
@@ -22,6 +23,9 @@ function App() {
         <Route path='/service/:serviceId' element={<ServiceDetails></ServiceDetails>}></Route>
         <Route path='/checkout' element={
           <RequireAuth><CheckOut></CheckOut></RequireAuth>
+        }></Route>
+        <Route path='/addservice' element={
+          <RequireAuth><AddService></AddService></RequireAuth>
         }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
